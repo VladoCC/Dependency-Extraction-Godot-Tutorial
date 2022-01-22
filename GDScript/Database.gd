@@ -12,6 +12,9 @@ func _ready():
 	# parse content as json
 	var content = file.get_as_text()
 	_data_model = parse_json(content)
+	
+	# don't forget to close file
+	file.close()
 
 func get_value(key, field):
 	if not _data_model.has(key):
