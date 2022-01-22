@@ -1,0 +1,46 @@
+{
+    "default": {
+        "hp": 100,
+        "gold": 0,
+        "description": "default",
+        "passive": false
+    },
+    "black_widow": {
+        "health": 1000,
+        "gold": 300,
+        "description": "Toxic and poisonous",
+        "passive": false,
+        "level_requirement": 15
+    },
+    "cow":{
+      "hp": 10,
+      "gold": 2,
+      "description": "Mooo",
+      "passive": true
+    },
+    "goblin": {
+      "hp": 80,
+      "gold": 10,
+      "description": "Oh, shiny!",
+      "passive": false
+    },
+    "goblin_king": {
+      "hp": 500,
+      "gold": 100,
+      "description": "Smart. You die if not agree!",
+      "passive": false,
+      "level_requirement": 5
+    },
+    "spider": {
+      "hp": 150,
+      "gold": 20,
+      "description": "So many legs.. Why?",
+      "passive": false
+    },
+    "villager": {
+      "hp": 100,
+      "gold": 30,
+      "description": "Wanna trade or what?",
+      "passive": true
+    }
+}
