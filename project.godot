@@ -10,12 +10,12 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node2D",
-"class": "Mob",
+"class": "Parent",
 "language": "GDScript",
 "path": "res://GDScript/Parent.gd"
 } ]
 _global_script_class_icons={
-"Mob": ""
+"Parent": ""
 }
 
 [application]

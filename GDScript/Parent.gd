@@ -9,7 +9,6 @@ var prop
 var model
 
 func _ready():
-	print("gd")
 	# you can use this dictionary as a storage for fields
 	model = Database._data_model[key]
 	
