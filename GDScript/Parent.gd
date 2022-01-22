@@ -14,4 +14,4 @@ func _ready():
 	model = Database._data_model[key]
 	
 	# or use predefined function to assign values to vars
-	health = Database.get_value(key, "prop_key")
+	prop = Database.get_value(key, "prop_key")
