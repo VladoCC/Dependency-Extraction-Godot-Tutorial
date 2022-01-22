@@ -1,22 +1,17 @@
 extends Node2D
-class_name Mob
+class_name Parent
 
-export (String) var mob_name
+export (String) var key
 
-var health = 0
-var gold = 0
-var description = ""
-var passive = true
+# data previously stored in export variable
+var prop
 
 var model
 
 func _ready():
 	print("gd")
 	# you can use this dictionary as a storage for fields
-	model = Database._mob_model[mob_name]
+	model = Database._data_model[key]
 	
 	# or use predefined function to assign values to vars
-	health = Database.get_value(mob_name, "health")
-	gold = Database.get_value(mob_name, "gold")
-	description = Database.get_value(mob_name, "description")
-	passive = Database.get_value(mob_name, "passive")
+	health = Database.get_value(key, "prop_key")

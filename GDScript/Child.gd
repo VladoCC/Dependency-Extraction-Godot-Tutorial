@@ -1,5 +1,5 @@
-extends Mob
+extends Parent
 
 
 func _ready():
-	print("Godlin-specific code")
+	print("Child-specific code")
