@@ -1,0 +1,3 @@
+mob,hp,gold,description,passive
+goblin,80,10,"Oh, shiny!",<false>
+spider,150,20,So many legs.. Why?,<false>
