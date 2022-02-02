@@ -31,10 +31,7 @@ func load_model():
 func load_json(file: File):
 	# parse content as json
 	var content = file.get_as_text()
-	_data_model = parse_json(content)
-	
-	# don't forget to close a file
-	file.close()
+	return parse_json(content)
 
 # we want to be able to parse the same types of data from csv,
 # as we're able to parse from json
