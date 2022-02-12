@@ -19,7 +19,7 @@
 		"passive": true
 	},
 	"goblin": {
-		"hp": 90,
+		"hp": 100,
 		"gold": 10,
 		"description": "Oh, shiny!",
 		"passive": false

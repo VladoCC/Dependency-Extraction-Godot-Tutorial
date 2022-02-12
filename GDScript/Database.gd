@@ -1,6 +1,10 @@
+tool
 extends Node
 
-const path = "res://example_data.csv"
+signal model_updated
+
+const check_time = 1.0
+const path = "res://example_data.json"
 
 # our model, which stores info about different types of mobs
 # name starts with underscore to show that this variable is private
@@ -9,6 +13,9 @@ func get_model():
 	if _data_model.empty():
 		load_model()
 	return _data_model
+
+var timer = 0.0
+var modified_at
 
 func _ready():
 	# we don't want to load model twice
@@ -23,7 +30,9 @@ func load_model():
 	var file = File.new()
 	file.open(path, file.READ)
 	
-	_data_model = load_csv(file)
+	modified_at = file.get_modified_time(path)
+	_data_model = load_json(file)
+	print(_data_model)
 	
 	# don't forget to close a file
 	file.close()
@@ -71,3 +80,30 @@ func is_structure(text: String):
 	var is_arr = text.begins_with("[") and text.ends_with("]")
 	var is_dict = text.begins_with("{") and text.ends_with("}")
 	return is_arr or is_dict
+
+func _process(delta):
+	if Engine.editor_hint:
+		timer += delta
+		if timer > check_time:
+			timer -= check_time
+			check()
+
+func check():
+	var file = File.new()
+	if file.get_modified_time(path) != modified_at:
+		load_model()
+		print("Model updated from external source")
+		emit_signal("model_updated")
+
+func edit_model(key, value):
+	_data_model[key] = value
+	dump()
+
+func dump():
+	var file = File.new()
+	file.open(path, file.WRITE)
+	
+	var json = JSON.print(_data_model, "\t")
+	file.store_string(json)
+	file.close()
+	modified_at = file.get_modified_time(path)

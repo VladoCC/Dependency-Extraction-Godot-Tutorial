@@ -1,3 +1,4 @@
+tool
 extends Parent
 
 func _ready():

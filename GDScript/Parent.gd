@@ -1,17 +1,41 @@
+tool
 extends Node2D
 class_name Parent
+
+var init = false
+var export_vars: Array = ["hp"]
 
 export (String) var key
 
 # data previously stored in export variable
-var prop: int
+export (int) var hp: int setget set_hp
+func set_hp(value):
+	hp = value
+	update_exports()
 
 var model: Dictionary
 
+func update_exports():
+	if init and Engine.editor_hint:
+		print("Model updated by export")
+		for key in export_vars:
+			model[key] = get(key)
+		Database.edit_model(key, model.duplicate())
+
 func _ready():
+	sync_to_model()
+	if Engine.editor_hint and not Database.is_connected("model_updated", self, "sync_to_model"):
+		Database.connect("model_updated", self, "sync_to_model")
+	init = true
+
+func sync_to_model():
+	if not Database._data_model.has(key):
+		return
+	
 	model = Database._data_model[key]
 	# if you want to edit model in-game, we need to duplicate it
 	# otherwise it would change_data_model and all objects created after that
 	model = model.duplicate()
 	
-	prop = model["prop_key"]
+	for key in export_vars:
+		set(key, model[key])

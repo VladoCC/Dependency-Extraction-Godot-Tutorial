@@ -5,3 +5,4 @@
 [node name="Child" type="Node2D"]
 script = ExtResource( 1 )
 key = "goblin"
+hp = 150
