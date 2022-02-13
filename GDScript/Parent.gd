@@ -39,3 +39,6 @@ func sync_to_model():
 	
 	for key in export_vars:
 		set(key, model[key])
+	
+	# with this line editor GUI updates instantly, without deselecting a node
+	property_list_changed_notify()
