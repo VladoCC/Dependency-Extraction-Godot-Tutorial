@@ -3,6 +3,7 @@ extends Node2D
 class_name Parent
 
 var init = false
+var locked = false
 var export_vars: Array = ["hp"]
 
 export (String) var key setget set_key
@@ -19,7 +20,7 @@ func set_hp(value):
 var model: Dictionary
 
 func update_exports():
-	if init and Engine.editor_hint:
+	if not locked and init and Engine.editor_hint:
 		print("Model updated by export")
 		for key in export_vars:
 			model[key] = get(key)
@@ -40,8 +41,14 @@ func sync_to_model():
 	# otherwise it would change_data_model and all objects created after that
 	model = model.duplicate()
 	
+	# we want to lock down updates from export variables
+	# since set() function will trigger them
+	# and when first of them is triggered, it will update database with
+	# values of other variables that might be outdated, because we didn't set them yet
+	locked = true
 	for key in export_vars:
 		set(key, model[key])
+	locked = false
 	
 	# with this line editor GUI updates instantly, without deselecting a node
 	property_list_changed_notify()
