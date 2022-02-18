@@ -5,7 +5,10 @@ class_name Parent
 var init = false
 var export_vars: Array = ["hp"]
 
-export (String) var key
+export (String) var key setget set_key
+func set_key(new_key):
+	key = new_key
+	sync_to_model()
 
 # data previously stored in export variable
 export (int) var hp: int setget set_hp
