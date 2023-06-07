@@ -1,8 +1,8 @@
 # Dependency-Extraction-Godot-Tutorial
 Video tutorials about this tool:   
 Part 1 (JSON): [YouTube](https://youtu.be/EmZX3qhe4_4)   
-Part 2 (CSV): [YouTube](https://youtu.be/vr2ODi9RkDs)
-Part 2 (Restoring exports): [YouTube](https://youtu.be/tMj7y3itwYE)
+Part 2 (CSV): [YouTube](https://youtu.be/vr2ODi9RkDs)   
+Part 3 (Restoring exports): [YouTube](https://youtu.be/tMj7y3itwYE)
 
 ## Problem
 Export variables in Godot allow you to redefine properties of base class in its children.    
